@@ -9,6 +9,6 @@
 * bcrypt
 * Jwt
 ## Features
-## [ ] User
-   [ ] Login
-   [ ] Register
+## - [] User
+   -[] Login
+  - [] Register
