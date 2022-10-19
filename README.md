@@ -1,5 +1,5 @@
 # Ecommerce
-##Tech Stack
+## Tech Stack
 * Mongodb
 * expressjs
 * Reactjs
