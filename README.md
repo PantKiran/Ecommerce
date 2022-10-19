@@ -8,3 +8,7 @@
 * Formik and Yup
 * bcrypt
 * Jwt
+## Features
+## [] User
+   [] Login
+   [] Register
