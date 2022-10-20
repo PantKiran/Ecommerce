@@ -2,10 +2,13 @@
 const express = require ("express")
 const router = express.Router()
 const Login = require("../Model/loginSchema")
+const Register= require("../Model/registerSchema")
 router.post("/", async (req, res) => {
-  // Users.create(req.body)
-  // console.log(req.body)
-  Login.create(req.body);
+  const user = Register.findOne(
+    {
+      phoneNumber:req.body.phoneNumber
+    })
+  console.log(user)
 });
 
 module.exports = router
