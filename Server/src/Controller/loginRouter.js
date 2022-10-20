@@ -1,10 +1,10 @@
 // post request for Login
 const express = require ("express")
 const router = express.Router()
-const Login = require("../Model/loginSchema")
-const Register= require("../Model/registerSchema")
+const login = require("../Model/loginSchema")
+const products= require("../Model/usersSchema")
 router.post("/", async (req, res) => {
-  const user = Register.findOne(
+  const user = products.findOne(
     {
       phoneNumber:req.body.phoneNumber
     })

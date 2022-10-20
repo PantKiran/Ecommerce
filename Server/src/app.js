@@ -10,12 +10,12 @@ require("dotenv").config();
 const connect = require("./db/mongoose");
 connect();
 
-const productListRouter = require("../src/Controller/productListRouter")
-const registerRouter = require("../src/Controller/registerRouter")
+const productsRouter = require("./Controller/productsRouter")
+const usersRouter = require("./Controller/usersRouter")
 const loginRouter = require("../src/Controller/loginRouter")
 
-app.use("/productList", productListRouter)
-app.use("/register",registerRouter)
+app.use("/products", productsRouter)
+app.use("/users",usersRouter)
 app.use("/login",loginRouter)
 
 app.listen(process.env.PORT, () => {

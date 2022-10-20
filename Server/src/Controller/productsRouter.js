@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
-const productList = require("../Model/productListSchema");
+const products = require("../Model/productsSchema");
 
 //Get productList
 router.get("/", async (req, res) => {
-     const data= await productList.find({});
+     const data= await products.find({});
     res.json({
-      productList: data,
+      products: data,
     });
   });
   
@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
   router.post("/", async (req, res) => {
     // Users.create(req.body)
     // console.log(req.body)
-    productList.create(req.body);
+    products.create(req.body);
   });
   
   // toggle the Favourite button

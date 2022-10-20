@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const productListSchema = new mongoose.Schema({
+const productsSchema = new mongoose.Schema({
     productName: {type:String, required:true},
     price:{type:String, required:true},
     brandName:{type:String, required:true},
@@ -10,6 +10,6 @@ const productListSchema = new mongoose.Schema({
     collection:'productList'
   
   })
-  const productListModel = mongoose.model('productListModel', productListSchema)
+  const productsModel = mongoose.model('productsModel', productsSchema)
   
-  module.exports= productListModel
+  module.exports= productsModel

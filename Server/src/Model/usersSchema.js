@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const RegisterSchema = new mongoose.Schema(
+const usersSchema = new mongoose.Schema(
     {
       phoneNumber: { type: String, unique: true },
       password: String,
@@ -10,5 +10,5 @@ const RegisterSchema = new mongoose.Schema(
       collection: "Register",
     }
   );
-  const registerModel = mongoose.model("RegisterModel", RegisterSchema);
-  module.exports= registerModel
+  const usersModel = mongoose.model("usersModel", usersSchema);
+  module.exports= usersModel
