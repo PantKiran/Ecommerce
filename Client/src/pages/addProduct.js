@@ -17,7 +17,7 @@ const AddProduct = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({productName:productName,price:price,brandName:brandName,productId:productId,isFavourite:false}),
       };
-      await fetch("http://localhost:3001/productList/", requestOptions);
+      await fetch("http://localhost:3001/products/", requestOptions);
   };
 
   return (
