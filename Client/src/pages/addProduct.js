@@ -11,19 +11,13 @@ const AddProduct = () => {
   const [brandName, setbrandName] = useState([]);
   const [productId, setproductId] = useState([]);
 
-  const addProduct = async () => {
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        productName: productName,
-        price: price,
-        brandName: brandName,
-        productId: productId,
-        isFavourite: false,
-      }),
-    };
-    await fetch("http://localhost:3001/products/", requestOptions);
+  const addProduct =async()=>{
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({productName:productName,price:price,brandName:brandName,productId:productId,isFavourite:false}),
+      };
+      await fetch("http://localhost:3001/products/", requestOptions);
   };
 
   return (

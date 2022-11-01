@@ -19,7 +19,7 @@ const GetProductList = () => {
 
   // Getting the product list into UI
   const getProductList = async () => {
-    const res = await fetch("http://localhost:3001/products");
+    const res = await fetch("http://localhost:3001/productList");
     const data = await res.json();
     setproductList(data.products);
   };
@@ -35,12 +35,9 @@ const GetProductList = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ isFavourite: productList.isFavourite }),
     };
-    const response = await fetch(
-      "http://localhost:3001/products",
-      requestOptions
-    );
-    if (response) {
-      productList();
+    const response= await fetch("http://localhost:3001/products", requestOptions)
+    if(response){
+      productList()
     }
   };
 
