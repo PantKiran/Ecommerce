@@ -20,7 +20,7 @@ const Register = () => {
     body: JSON.stringify({phoneNumber:phoneNumber,password:password,fullName:fullName}),
     
   };
-  await fetch("http://localhost:3001/register/", requestOptions);
+  await fetch("http://localhost:3001/users/", requestOptions);
   
 }
 

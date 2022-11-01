@@ -19,9 +19,9 @@ const GetProductList = () => {
 
   // Getting the product list into UI
   const getProductList = async () => {
-    const res = await fetch("http://localhost:3001/productList");
+    const res = await fetch("http://localhost:3001/products");
     const data = await res.json();
-    setproductList(data.productList);
+    setproductList(data.products);
   };
 
   useEffect(() => {
@@ -29,17 +29,20 @@ const GetProductList = () => {
   }, []);
 
   // toggle the favourite button from database
-  const setFavourite=async()=>{
+  const setFavourite = async () => {
     const requestOptions = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({isFavourite:productList.isFavourite}),
+      body: JSON.stringify({ isFavourite: productList.isFavourite }),
     };
-    const response= await fetch("http://localhost:3001/productList", requestOptions)
-    if(response){
-      productList()
+    const response = await fetch(
+      "http://localhost:3001/products",
+      requestOptions
+    );
+    if (response) {
+      productList();
     }
-   }
+  };
 
   const searchedProduct = productList.filter((item) => {
     if (item.productName.includes(SearchProd)) {
@@ -74,15 +77,7 @@ const GetProductList = () => {
                   <Card.Text>Product Id : {item.productId}</Card.Text>
                 </Card.Body>
                 <div
-                  onClick={() => setFavourite()
-                  //   if (isFavourite === true) {
-                  //     setFavouriteCount(0);
-                  //     setIsFavourite(false);
-                  //   } else {
-                  //     setFavouriteCount(1);
-                  //     setIsFavourite(true);
-                  //   }
-                  }
+                  onClick={() => setFavourite()}
                   style={{ paddingLeft: "200px" }}
                 >
                   {" "}
