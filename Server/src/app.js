@@ -7,6 +7,7 @@ app.use(bodyParser.json());
 require("dotenv").config();
 
 
+
 const connect = require("./db/mongoose");
 connect();
 
@@ -21,6 +22,17 @@ app.use("/login",loginRouter)
 app.listen(process.env.PORT, () => {
   console.log(`Example app listening on port ${process.env.PORT}`);
 });
+
+
+
+
+
+
+
+
+
+
+
 
 
 
