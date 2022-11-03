@@ -6,35 +6,20 @@ app.use(cors());
 app.use(bodyParser.json());
 require("dotenv").config();
 
-
-
 const connect = require("./db/mongoose");
 connect();
 
-const productsRouter = require("./Controller/productsRouter")
-const usersRouter = require("./Controller/usersRouter")
-const loginRouter = require("../src/Controller/loginRouter")
+const productsRouter = require("./Controller/productsRouter");
+const usersRouter = require("./Controller/usersRouter");
+const loginRouter = require("../src/Controller/loginRouter");
 
-app.use("/products", productsRouter)
-app.use("/users",usersRouter)
-app.use("/login",loginRouter)
+app.use("/products", productsRouter);
+app.use("/users", usersRouter);
+app.use("/login", loginRouter);
 
 app.listen(process.env.PORT, () => {
   console.log(`Example app listening on port ${process.env.PORT}`);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // app.get("/productList", async (req, res) => {
 //   const productList = await Users.find({});
