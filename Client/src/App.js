@@ -7,6 +7,7 @@ import GetProductList from './pages/getProductList';
 import NavBar from './components/NavBar';
 import Categories from './components/Categories';
 import PaginationBar from './components/Pagination';
+import LazyLoad from './components/LazyLoader/LazyLoad';
 // import { ValidationSchemaExample } from './pages/formikvalidation';
 
 const  App=()=> {
@@ -14,6 +15,7 @@ const  App=()=> {
   return (
     
     <div className="container" >
+      {/* <LazyLoad/> */}
       <Routes>
       <Route path="/addProduct" element={<AddProduct />} />
         <Route path="/login" element={<Login />} />
@@ -23,7 +25,7 @@ const  App=()=> {
         <Route path = "/" element={<NavBar/>}/>
 
       </Routes>
-      
+    
     </div>
   );
 }

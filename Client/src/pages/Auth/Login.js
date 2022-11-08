@@ -17,14 +17,13 @@ import * as Yup from "yup";
 
 const Login = () => {
   const SignupSchema = Yup.object().shape({
-    email: Yup.string().email("Invalid email").required("Required"),
+    phoneNumber: Yup.string().required("Required"),
     password: Yup.string()
     .required('No password provided.') 
     .min(8, 'Password is too short - should be 8 chars minimum.')
-    // .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.')
   });
   const signUp=()=>{
-    // console.log(SignupSchema)
+   
   }
   return (
     <div className="conatianer mt-3">
@@ -32,9 +31,7 @@ const Login = () => {
       <h4>Welcome to Ecommerce! Please login.</h4>
       <Formik
         initialValues={{
-          //  firstName: '',
-          //  lastName: '',
-          email: "",
+          phoneNumber: "",
           password:""
         }}
          validationSchema={SignupSchema}
@@ -47,15 +44,11 @@ const Login = () => {
           <div className="col-5">
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" name='email' placeholder="Enter email" />
-                {errors.email && touched.email ? (
+                <Form.Label>Mobile Number</Form.Label>
+                <Form.Control type="text" name='mobile' placeholder="Enter Mobile Number" />
+                {errors.phoneNumber && touched.phoneNumber ? (
                     <div>{errors.email}</div>
                   ) : null}
-                {/* <Form.Text className="text-muted"> */}
-                 
-                  {/* We'll never share your email with anyone else. */}
-                {/* </Form.Text> */}
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">

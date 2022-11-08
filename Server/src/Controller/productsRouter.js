@@ -6,7 +6,7 @@ const products = require("../Model/productsSchema");
 const multer = require("multer");
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "productImages/");
+    cb(null, "../Client/src/productImages");
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
@@ -27,22 +27,25 @@ router.get("/", async (req, res) => {
 
 //Post Products
 router.post("/", upload, async (req, res) => {
-  //  console.log(req.file)
-  req.body.fileName = req.file.path;
-  products.create(req.body);
+  // console.log(req.file)
+  req.body.filename = req.file.filename;
+  // console.log(req.body)
+  
+  products.create(req.body)
+
 });
 
-// toggle the Favourite button
-router.put("/", async (req, res) => {
-  console.log(req.body);
-  const filter = { isFavourite: req.body.isFavourite };
-  const update = { isFavourite: true };
-  let data = await Users.findOneAndUpdate({ filter });
-  if (data) {
-    res.json({
-      message: "updated",
-    });
-  }
-});
+// // toggle the Favourite button
+// router.put("/", async (req, res) => {
+//   console.log(req.body);
+//   const filter = { isFavourite: req.body.isFavourite };
+//   const update = { isFavourite: true };
+//   let data = await Users.findOneAndUpdate({ filter });
+//   if (data) {
+//     res.json({
+//       message: "updated",
+//     });
+//   }
+// });
 
 module.exports = router;

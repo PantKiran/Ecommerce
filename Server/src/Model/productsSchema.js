@@ -5,8 +5,8 @@ const productsSchema = new mongoose.Schema({
     price:{type:String, required:true},
     brandName:{type:String, required:true},
     productId:{type:String, required:true},
-    isFavourite:{type:Boolean},
-    fileName:{type:String, required:true}
+    filename:{type:String, required:true},
+    // isFavourite:{type:Boolean},
   },
   {
     collection:'productList'

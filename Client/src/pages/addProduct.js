@@ -10,15 +10,27 @@ const AddProduct = () => {
   const [price, setPrice] = useState([]);
   const [brandName, setbrandName] = useState([]);
   const [productId, setproductId] = useState([]);
+  const [file, setFile] = useState();
 
-  const addProduct =async()=>{
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({productName:productName,price:price,brandName:brandName,productId:productId,isFavourite:false}),
-      };
-      await fetch("http://localhost:3001/products/", requestOptions);
+  const handleFile = (e) => {
+    setFile(e.target.files[0])
   };
+
+  const addProduct = async () => {
+    const formData = new FormData()
+    formData.append("avatar", file);
+    formData.append("productName", productName);
+    formData.append("price", price);
+    formData.append("brandName", brandName);
+    formData.append("productId", productId);
+    const requestOptions = {
+      method: "POST",
+      body:formData,
+      dataType:"jsonp"
+    };
+    await fetch("http://localhost:3001/products/", requestOptions);
+  };
+  
 
   return (
     <div className="container mt-3 ">
@@ -62,7 +74,7 @@ const AddProduct = () => {
           />
         </InputGroup>
         <Form.Group controlId="formFile" className="mb-3">
-          <Form.Control type="file" />
+          <Form.Control type="file" name="avatar" onChange={handleFile} />
         </Form.Group>
         <SubmitButton onClick={() => addProduct()} name={"Submit"} />
       </div>

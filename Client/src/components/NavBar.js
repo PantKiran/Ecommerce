@@ -2,6 +2,7 @@ import React from 'react'
 import { Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import SearchBar from '../pages/SearchBar'
+import { ShoppingCartOutlined } from "@ant-design/icons";
 const NavBar = () => {
   return (
     <div>
@@ -11,6 +12,12 @@ const NavBar = () => {
           <Nav.Item>
           </Nav.Item>
           <Nav.Item>
+            <Nav.Link ><Link to="/customerCare">Customer Care</Link></Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link ><Link to="/trackOrder">Track My Order</Link></Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
             <Nav.Link ><Link to="/login">Login</Link></Nav.Link>
           </Nav.Item>
           <Nav.Item>
@@ -18,6 +25,9 @@ const NavBar = () => {
           </Nav.Item>
           <Nav.Item>
             <Nav.Link ><Link to="/">Home</Link></Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+          <Nav.Link><ShoppingCartOutlined /></Nav.Link>
           </Nav.Item>
         </Nav>
       </div>

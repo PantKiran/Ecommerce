@@ -18,7 +18,7 @@ app.use("/users", usersRouter);
 app.use("/login", loginRouter);
 
 app.listen(process.env.PORT, () => {
-  console.log(`Example app listening on port ${process.env.PORT}`);
+  console.log(`Ecommerce Server listening on port ${process.env.PORT}`);
 });
 
 // app.get("/productList", async (req, res) => {
