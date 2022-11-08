@@ -3,17 +3,20 @@ import { Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import SearchBar from '../pages/SearchBar'
 import { ShoppingCartOutlined } from "@ant-design/icons";
+import Categories from './Categories';
 const NavBar = () => {
   return (
     <div>
 
-      <div className="Nav fixed" >
-        <Nav className="justify-content-end " activeKey="/home">
-          <Nav.Item>
+      <div className="Nav fixed  "  >
+        <Nav className="justify-content-end" activeKey="/home" style={{textDecoration:"none"}} >
+        <Nav.Item>
+            <Categories/>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link ><Link to="/customerCare">Customer Care</Link></Nav.Link>
           </Nav.Item>
+
           <Nav.Item>
             <Nav.Link ><Link to="/trackOrder">Track My Order</Link></Nav.Link>
           </Nav.Item>
@@ -30,6 +33,7 @@ const NavBar = () => {
           <Nav.Link><ShoppingCartOutlined /></Nav.Link>
           </Nav.Item>
         </Nav>
+        
       </div>
     </div>
   )

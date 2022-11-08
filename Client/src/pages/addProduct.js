@@ -35,7 +35,7 @@ const AddProduct = () => {
   return (
     <div className="container mt-3 ">
       <NavBar />
-      <div className="col-5 ">
+      <div className="col-5" >
         <InputGroup
           onKeyUp={(e) => setProductName(e.target.value)}
           className="mb-3 "
