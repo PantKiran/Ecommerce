@@ -13,16 +13,12 @@ import Categories from "../components/Categories";
 import PaginationBar from "../components/Pagination";
 import { Link, NavLink, useLinkClickHandler } from "react-router-dom";
 import GetModal from "../components/Modal";
-
-
+import Login from "../pages/Auth/Login";
 
 const GetProductList = () => {
   const [productList, setproductList] = useState([]);
   const [SearchProd, setSearchProd] = useState([]);
-  const [isFavourite, setIsFavourite] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
-  // const [favouriteCount, setFavouriteCount] = useState(0);
 
   // Getting the product list into UI
   const getProductList = async () => {
@@ -34,92 +30,76 @@ const GetProductList = () => {
   useEffect(() => {
     getProductList();
   }, []);
-
-  // toggle the favourite button from database
-  const setFavourite = async () => {
-    const requestOptions = {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ isFavourite: productList.isFavourite }),
-    };
-    const response = await fetch(
-      "http://localhost:3001/products",
-      requestOptions
-    );
-    if (response) {
-      productList();
-    }
-  };
-
   const searchedProduct = productList.filter((item) => {
     if (item.productName.includes(SearchProd)) {
       return item;
     }
   });
-  const viewItem = () => {
-    setIsModalOpen(true)
+  const viewItem = (item) => {
+    setIsModalOpen(true);
+  };
+    
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
   };
 
   return (
-    <div>
+    <>
       <NavBar />
-      <Categories />
-      <GetModal/>
-      <Modal title="Basic Modal" open={isModalOpen} >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Modal>
-      <SearchBar onKeyUp={(e) => setSearchProd(e.target.value)} />
+      <div style={{ marginTop: "100px", marginBottom: "100px" }}>
+        <Modal
+          title="Product Dersciption"
+          open={isModalOpen}
+          onOk={handleOk}
+          onCancel={handleCancel}
+        >
+          <Login/>
+          
+        </Modal>
+        <SearchBar onKeyUp={(e) => setSearchProd(e.target.value)} />
 
-      <div className="">
-        <h4>Just For You</h4>
-       
-        {productList.length > 0 ? (
-          searchedProduct.map((item) => {
-            console.log(item)
-            return (
-               <a onClick={()=>viewItem()}>
-                <Card
-                  className=""
-                  style={{
-                    width: "12rem",
-                    display: " inline-flex",
-                    margin: "14px",
-                  }}
-                >
-                  {/* require('../productImages'+item.filePath) */}
-                  <Card.Img variant="top" src={require('../productImages/'+item.filename) } />
-                  <Card.Body>
-                    <Card.Title>{item.productName}</Card.Title>
-                    <Card.Text>price :Rs {item.price}</Card.Text>
-                    <Card.Text>Brand Name : {item.brandName}</Card.Text>
-                    <Card.Text>Product Id : {item.productId}</Card.Text>
-                  </Card.Body>
-                  {/* <div
-                  onClick={() => setFavourite()}
-                  style={{ paddingLeft: "200px" }}
-                >
-                  {" "}
-                  {favouriteCount}
-                  <a>
-                    <BsHeart
-                      style={{
-                        color: item.isFavourite === true ? "red" : null,
-                      }}
+        <div className="">
+          <h4>Just For You</h4>
+          {productList.length > 0 ? (
+            searchedProduct.map((item) => {
+              // console.log(item)
+              return (
+                <a onClick={() => viewItem(item)}>
+                  <Card
+                    className=""
+                    style={{
+                      width: "12rem",
+                      display: " inline-flex",
+                      margin: "14px",
+                      height: "23rem",
+                    }}
+                  >
+                    <Card.Img
+                      variant="top"
+                      src={require("../productImages/" + item.filename)}
+                      width="190"
+                      height="143"
                     />
-                  </a>
-                </div> */}
-                </Card>
-              </a>
-            );
-          })
-        ) : (
-          <Skeleton active />
-        )}
-        <PaginationBar />
+                    <Card.Body>
+                      <Card.Title>{item.productName}</Card.Title>
+                      <Card.Text>price :Rs {item.price}</Card.Text>
+                      <Card.Text>Brand Name : {item.brandName}</Card.Text>
+                      <Card.Text>Product Id : {item.productId}</Card.Text>
+                    </Card.Body>
+                  </Card>
+                </a>
+              );
+            })
+          ) : (
+            <Skeleton active />
+          )}
+          <PaginationBar />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 export default GetProductList;

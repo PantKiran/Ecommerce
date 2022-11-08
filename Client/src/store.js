@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import logger from 'redux-logger'
-import LazyLoadSlice from "./components/LazyLoader/LazyLoad.slice";
+import addToCartSlice from "./components/addToCart/addToCart.slice";
 const reducer = combineReducers({
-    LazyLoad: LazyLoadSlice
+    count: addToCartSlice
 });
 
 const store = configureStore({

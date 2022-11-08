@@ -26,9 +26,11 @@ const Login = () => {
    
   }
   return (
-    <div className="conatianer mt-3">
-      <NavBar />
-      <h4>Welcome to Ecommerce! Please login.</h4>
+    <>
+    <NavBar />
+
+    <div className="conatianer mt-3" style={{display: 'flex', justifyContent: 'center'}}>
+      
       <Formik
         initialValues={{
           phoneNumber: "",
@@ -43,6 +45,7 @@ const Login = () => {
         {({ errors, touched }) => (
           <div className="col-5">
             <Form>
+                <h4>Welcome to Ecommerce! Please login.</h4>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Mobile Number</Form.Label>
                 <Form.Control type="text" name='mobile' placeholder="Enter Mobile Number" />
@@ -72,6 +75,7 @@ const Login = () => {
         )}
       </Formik>
     </div>
+    </>
   );
 };
 
