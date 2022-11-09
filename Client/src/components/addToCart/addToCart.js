@@ -1,23 +1,19 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addProductToCart} from "./addToCart.slice";
+import { addProductToCart } from "./addToCart.slice";
 
 const AddToCart = () => {
   const dispatch = useDispatch();
 
-  const {count} = useSelector((state) => state.count);
+  const { count } = useSelector((state) => state.count);
 
-  const add=()=>{
-    dispatch(addProductToCart())
-  }
+  const add = () => {
+    dispatch(addProductToCart());
+  };
   return (
     <>
-    
-      <div>
-       {count}
-      </div>
-     
-    
+      <div>{count}</div>
+
       <button onClick={add}>AddToCart</button>
     </>
   );
