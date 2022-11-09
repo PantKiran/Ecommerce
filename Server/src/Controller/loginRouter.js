@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 require("dotenv").config();
 const router = express.Router();
 const jwt = require("jsonwebtoken");
-const login = require("../Model/loginSchema");
+// const login = require("../Model/loginSchema");
 const users = require("../Model/usersSchema");
 router.post("/", async (req, res) => {
   const userData = users.findOne(
@@ -23,6 +23,7 @@ router.post("/", async (req, res) => {
                 process.env.TOKEN_SECRET
               );
               console.log(token);
+              users.findOneAndUpdate({token:req.body.token})
               res.json({
                 message: " password matched",
                 token: token,
