@@ -4,7 +4,8 @@ const usersSchema = new mongoose.Schema(
     {
       phoneNumber: { type: String, unique: true },
       password: String,
-      fullName: {type:String, required:true}
+      fullName: {type:String, required:true},
+      token:{type:String}
     },
     {
       collection: "Register",
