@@ -25,12 +25,11 @@ const SubmitButton = (props) => {
   // };
   return (
     <div>
-       <div className="btn-group">
-       <Button type='submit' onClick={props.onClick} className="primary">
-        {props.name}
-      </Button>
-       </div>
-      
+      <div className="btn-group">
+        <Button type="submit" onClick={props.onClick} className="primary">
+          {props.name}
+        </Button>
+      </div>
     </div>
   );
 };

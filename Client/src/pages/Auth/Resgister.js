@@ -31,8 +31,7 @@ const Register = () => {
       <NavBar />
       <div
         className="conatainer mt-3,"
-        style={{ display: "flex", justifyContent: "center", marginTop
-      :'30px' }}
+        style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}
       >
         <div className="col-5">
           <Form>

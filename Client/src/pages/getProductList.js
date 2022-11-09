@@ -12,13 +12,12 @@ import { BsHeart } from "react-icons/bs";
 import Categories from "../components/Categories";
 import PaginationBar from "../components/Pagination";
 import { Link, NavLink, useLinkClickHandler } from "react-router-dom";
-import GetModal from "../components/Modal";
-import Login from "../pages/Auth/Login";
 
 const GetProductList = () => {
   const [productList, setproductList] = useState([]);
   const [SearchProd, setSearchProd] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [product, setProduct] = useState([]);
 
   // Getting the product list into UI
   const getProductList = async () => {
@@ -36,15 +35,18 @@ const GetProductList = () => {
     }
   });
   const viewItem = (item) => {
+    setProduct(item);
     setIsModalOpen(true);
   };
-    
+
   const handleOk = () => {
     setIsModalOpen(false);
   };
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
+  const buy = () => {};
 
   return (
     <>
@@ -56,8 +58,16 @@ const GetProductList = () => {
           onOk={handleOk}
           onCancel={handleCancel}
         >
-          <Login/>
-          
+          <p>product Name: {product.productName}</p>
+          <p>Price Rs: {product.price}</p>
+          <p>Brand Name: {product.brandName}</p>
+          <p>Product Id :{product.productId}</p>
+          <Button type="primary" style={{ margin: "5px" }}>
+            Add to Cart
+          </Button>
+          <Button type="primary" onClick={buy}>
+            Buy
+          </Button>
         </Modal>
         <SearchBar onKeyUp={(e) => setSearchProd(e.target.value)} />
 
