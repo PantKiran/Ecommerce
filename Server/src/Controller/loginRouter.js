@@ -23,11 +23,15 @@ router.post("/", async (req, res) => {
                 process.env.TOKEN_SECRET
               );
               console.log(token);
-              users.findOneAndUpdate({token:req.body.token})
-              res.json({
-                message: " password matched",
-                token: token,
-              });
+              users.findOneAndUpdate({phoneNumber:req.body.phoneNumber},
+                {token:token
+                }).then((data)=>{
+                  res.json({
+                    message: " password matched",
+                    token: token,
+                  });
+                })
+              
             } else {
               res.json({
                 message: "opps! password does not match",
