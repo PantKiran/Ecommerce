@@ -22,8 +22,9 @@ const SearchBar = (props) => (
         paddingLeft:300,
       }}
     />
-    
+ 
   </Space>
+  
 );
 
 export default SearchBar;

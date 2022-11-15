@@ -9,12 +9,12 @@ import Categories from "./components/Categories";
 import PaginationBar from "./components/Pagination";
 import AddToCart from "./components/addToCart/addToCart";
 import TrackOrder from "./pages/TrackOrder";
+import Admin from "./pages/Admin";
 
 // import { ValidationSchemaExample } from './pages/formikvalidation';
 const App = () => {
   return (
     <div className="container">
-      {/* <AddToCart/> */}
       <Routes>
         <Route path="/addProduct" element={<AddProduct />} />
         <Route path="/login" element={<Login />} />
@@ -22,7 +22,11 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<GetProductList />} />
         <Route path="/" element={<NavBar />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/cart" element={<AddToCart/>} />
+
       </Routes>
+     
     </div>
   );
 };

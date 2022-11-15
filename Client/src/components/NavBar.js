@@ -5,6 +5,7 @@ import SearchBar from "../pages/SearchBar";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import Categories from "./Categories";
 const NavBar = () => {
+
   return (
     <div>
       <div className="Nav fixed  ">
@@ -44,7 +45,8 @@ const NavBar = () => {
           </Nav.Item>
           <Nav.Item>
             <Nav.Link>
-              <ShoppingCartOutlined />
+            <Link to="/cart"><ShoppingCartOutlined/></Link> 
+             
             </Nav.Link>
           </Nav.Item>
         </Nav>

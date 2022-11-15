@@ -33,9 +33,11 @@ const AddProduct = () => {
   
 
   return (
-    <div className="container mt-3 ">
+    <>
       <NavBar />
-      <div className="col-5" >
+
+    <div className="container mt-3 " style={{ display: "flex", justifyContent: "center" }}>
+      <div className="col-5"  >
         <InputGroup
           onKeyUp={(e) => setProductName(e.target.value)}
           className="mb-3 "
@@ -79,6 +81,7 @@ const AddProduct = () => {
         <SubmitButton onClick={() => addProduct()} name={"Submit"} />
       </div>
     </div>
+    </>
   );
 };
 
