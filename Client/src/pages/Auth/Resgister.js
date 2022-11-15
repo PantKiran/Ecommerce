@@ -5,15 +5,17 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 import NavBar from "../../components/NavBar";
 import { useState, useEffect } from "react";
 import { useRef } from "react";
-
+import { useNavigate } from 'react-router';
 const Register = () => {
   const [phoneNumber, setphoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setfullName] = useState("");
+  let navigate = useNavigate();
 
   const registerUser = async (e) => {
     //   e.preventDefault()
     // e.target.reset()
+   
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -24,6 +26,7 @@ const Register = () => {
       }),
     };
     await fetch("http://localhost:3001/users/", requestOptions);
+    navigate('/login')
   };
 
   return (
@@ -64,7 +67,7 @@ const Register = () => {
               Already member? <Link to="/login">Login</Link> here.
             </p>
           </Form>
-          <SubmitButton onClick={() => registerUser()} name={"SIGN UP"} />
+          <SubmitButton onClick={() =>registerUser()} name={"SIGN UP"} />
         </div>
       </div>
     </>

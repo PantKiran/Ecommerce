@@ -19,10 +19,14 @@ const upload = multer({ storage: storage }).single("avatar");
 //Get products
 router.get("/", async (req, res) => {
   
+
+
+
   const data = await products.find({});
   res.json({
     products: data,
   });
+
 });
 
 //Post Products

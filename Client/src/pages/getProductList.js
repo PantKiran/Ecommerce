@@ -12,16 +12,17 @@ import { BsHeart } from "react-icons/bs";
 import Categories from "../components/Categories";
 import PaginationBar from "../components/Pagination";
 import { Link, NavLink, useLinkClickHandler } from "react-router-dom";
-
+import { addProductToCart } from "../components/addToCart/addToCart.slice";
+import { useDispatch, useSelector } from "react-redux";
 const GetProductList = () => {
   const [productList, setproductList] = useState([]);
   const [SearchProd, setSearchProd] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [product, setProduct] = useState([]);
-
+  const dispatch = useDispatch();
   // Getting the product list into UI
   const getProductList = async () => {
-    const res = await fetch("http://localhost:3001/products");
+    const res = await fetch("http://localhost:3001/products/ ");
     const data = await res.json();
     setproductList(data.products);
   };
@@ -62,7 +63,7 @@ const GetProductList = () => {
           <p>Price Rs: {product.price}</p>
           <p>Brand Name: {product.brandName}</p>
           <p>Product Id :{product.productId}</p>
-          <Button type="primary" style={{ margin: "5px" }}>
+          <Button onClick={()=>dispatch(addProductToCart(product))} type="primary" style={{ margin: "5px" }}>
             Add to Cart
           </Button>
           <Button type="primary" onClick={buy}>
